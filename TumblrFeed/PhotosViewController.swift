@@ -58,15 +58,13 @@ class PhotosViewController: UIViewController,UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //        let cell = UITableViewCell()
-        //        cell.textLabel!.text = "This is row \(indexPath.row)"
         let cell = tableView.dequeueReusableCellWithIdentifier("PhotoCell") as! PhotoCell
         let post = posts[indexPath.row]
         if let photos = post.valueForKeyPath("photos") as? [NSDictionary] {
             // photos is NOT nil, go ahead and access element 0 and run the code in the curly braces
             let imageUrlString = photos[0].valueForKeyPath("original_size.url") as? String
             if let imageUrl = NSURL(string: imageUrlString!) {
-                // NSURL(string: imageUrlString!) is NOT nil, go ahead and unwrap it and assign it to imageUrl and run the code in the curly braces
+       
                 cell.pictureView.setImageWithURL(imageUrl)
             } else {
                 // NSURL(string: imageUrlString!) is nil. Good thing we didn't try to unwrap it!
@@ -76,9 +74,7 @@ class PhotosViewController: UIViewController,UITableViewDataSource, UITableViewD
         } else {
             // photos is nil. Good thing we didn't try to unwrap it!
         }
-        
-        
-        
+
         
         return cell
     }
@@ -93,19 +89,12 @@ class PhotosViewController: UIViewController,UITableViewDataSource, UITableViewD
         
         let post = posts[indexPath!.row]
         if let photos = post.valueForKeyPath("photos") as? [NSDictionary] {
-            // photos is NOT nil, go ahead and access element 0 and run the code in the curly braces
+
             let imageUrlString = photos[0].valueForKeyPath("original_size.url") as? String
             print(imageUrlString)
             if let imageUrl = NSURL(string: imageUrlString!) {
-                // NSURL(string: imageUrlString!) is NOT nil, go ahead and unwrap it and assign it to imageUrl and run the code in the curly braces
+
                 photoDetailsViewController.photoUrl = imageUrl
-                
-                
-                
-                
-                //let image = post["image"]
-                // vc.image = self.posts[indexPath!.row].image
-                
                 
             }
             
